@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";  // Alterado para usar next/navigation
 import axios from "axios";
+import Image from 'next/image';
 
 const LoginPage = () => {
   const router = useRouter();  // Uso do useRouter do next/navigation
@@ -40,7 +41,9 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex flex-col gap-2 justify-center items-center h-screen">
+      <Image src='/logo-gop.png' width={308} height={121} alt=""/>
+
       <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-md">
         <h2 className="text-2xl font-bold text-center mb-4">Login</h2>
         <form onSubmit={handleSubmit}>
