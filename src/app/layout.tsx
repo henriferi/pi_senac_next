@@ -1,8 +1,10 @@
-import type { Metadata } from "next";
+"use client";
+
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
+import { usePathname } from "next/navigation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,23 +16,23 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "GOP - Gestão Odontolegal Pericial",
-  description: "Sistema de Gestão de Perícias Odontolegal",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const pathname = usePathname();
+  const isLoginPage = pathname === "/login";
+
   return (
     <html lang="pt-br">
-      <body className={`${geistSans.variable} ${geistMono.variable} flex`}>
-        <Sidebar />
-        <div className="flex-1">
-          <Header />
-          {children}
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        {!isLoginPage && <Header />}
+        <div className="flex pt-16">
+          {!isLoginPage && <Sidebar />}
+          <main className={`flex-1 ${!isLoginPage ? 'ml-48' : ''} min-h-[calc(100vh-64px)]`}>
+            {children}
+          </main>
         </div>
       </body>
     </html>
