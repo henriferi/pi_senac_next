@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function CriarCaso() {
   const [form, setForm] = useState({
@@ -11,6 +11,24 @@ export default function CriarCaso() {
     dataHora: '',
   });
 
+  const [peritos, setPeritos] = useState<{ _id: string, nome: string }[]>([]);
+
+
+  useEffect(() => {
+    const fetchPeritos = async () => {
+      try {
+        const res = await fetch('http://localhost:5000/api/peritos');
+        const data = await res.json();
+        if(data.success) {
+          setPeritos(data.peritos);
+        }
+      } catch (err) {
+        console.error("Erro ao buscar peritos:", err);
+      }
+    };
+
+    fetchPeritos();
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -21,11 +39,11 @@ export default function CriarCaso() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
-
-
     if (!token) {
-      alert("Úsuario não autenticado. Faça login");
+      alert("Usuário não autenticado. Faça login.");
+      return;
     }
+
     try {
       const response = await fetch('http://localhost:5000/api/casos', {
         method: 'POST',
@@ -39,49 +57,21 @@ export default function CriarCaso() {
       if (!response.ok) throw new Error('Erro ao cadastrar caso');
 
       alert("Caso cadastrado com sucesso!");
-
     } catch (err) {
-      console.error(err);   
-      alert('Erro ao enviar dados. Verifique o  console.');
+      console.error(err);
+      alert('Erro ao enviar dados. Verifique o console.');
     }
   };
-
 
   return (
     <div className="max-w-2xl mx-auto mt-10 p-6 bg-white shadow-md rounded-2xl">
       <h1 className="text-2xl font-bold mb-6">Cadastrar Caso</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
-        <input
-          name="nome"
-          placeholder="Nome do caso"
-          value={form.nome}
-          onChange={handleChange}
-          className="w-full p-2 border rounded"
-          required
-        />
-        <input
-          name="local"
-          placeholder="Local"
-          value={form.local}
-          onChange={handleChange}
-          className="w-full p-2 border rounded"
-          required
-        />
-        <textarea
-          name="descricao"
-          placeholder="Descrição"
-          value={form.descricao}
-          onChange={handleChange}
-          className="w-full p-2 border rounded"
-          required
-        />
-        <select
-          name="tipo"
-          value={form.tipo}
-          onChange={handleChange}
-          className="w-full p-2 border rounded"
-          required
-        >
+        <input name="nome" placeholder="Nome do caso" value={form.nome} onChange={handleChange} className="w-full p-2 border rounded" required />
+        <input name="local" placeholder="Local" value={form.local} onChange={handleChange} className="w-full p-2 border rounded" required />
+        <textarea name="descricao" placeholder="Descrição" value={form.descricao} onChange={handleChange} className="w-full p-2 border rounded" required />
+        
+        <select name="tipo" value={form.tipo} onChange={handleChange} className="w-full p-2 border rounded" required>
           <option value="">Selecione um tipo</option>
           <option value="Lesão Corporal">Lesão Corporal</option>
           <option value="Identificação por Arcos Dentais">Identificação por Arcos Dentais</option>
@@ -89,14 +79,22 @@ export default function CriarCaso() {
           <option value="Exame de Marcas de Mordida">Exame de Marcas de Mordida</option>
           <option value="Coleta de DNA">Coleta de DNA</option>
         </select>
-        <input
+
+        <select
           name="peritoResponsavel"
-          placeholder="Perito Responsável"
           value={form.peritoResponsavel}
           onChange={handleChange}
           className="w-full p-2 border rounded"
           required
-        />
+        >
+          <option value="">Selecione um perito</option>
+          {peritos.map((perito) => (
+            <option key={perito._id} value={perito._id}>
+              {perito.nome}
+            </option>
+          ))}
+        </select>
+
         <div>
           <label htmlFor="dataHora">Data e Hora:</label>
           <input
@@ -107,10 +105,8 @@ export default function CriarCaso() {
             required
           />
         </div>
-        <button
-          type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-        >
+
+        <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
           Salvar Caso
         </button>
       </form>
