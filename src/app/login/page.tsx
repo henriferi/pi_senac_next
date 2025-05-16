@@ -16,7 +16,7 @@ const LoginPage = () => {
     const token = localStorage.getItem("token");
     if (token) {
       // Se já estiver logado, redireciona para a página de cadastro de casos
-      router.push("/casos/criar");
+      router.push("/casos/");
     }
   }, [router]);
 
@@ -34,7 +34,7 @@ const LoginPage = () => {
       localStorage.setItem("token", token);
 
       // Redirecionando para a página de cadastro de casos
-      router.push("/casos/criar");
+      router.push("/casos");
     } catch (error) {
       setErro("Credenciais inválidas. Tente novamente.");
     }

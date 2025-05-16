@@ -16,7 +16,7 @@ export default function Sidebar() {
             <nav>
                 <ul className="space-y-3">
                     <li>
-                        <Link href="/casos/visualizar">
+                        <Link href="/casos">
                             <div className="flex">
                                 <span className="block p-2 text-gray-700 hover:bg-gray-200 rounded transition">Visualizar casos</span>
                             </div>
@@ -29,7 +29,7 @@ export default function Sidebar() {
                     </li>
                     <li>
                         <Link href="/casos/criar">
-                            <span className="block p-2 text-gray-700 hover:bg-gray-200 rounded transition">Cadastrar novo usuário</span>
+                            <span className="block p-2 text-gray-700 hover:bg-gray-200 rounded transition">Cadastrar novo caso</span>
                         </Link>
                     </li>
                     <li>

@@ -1,6 +1,4 @@
 'use client';
-
-import LogoutButton from '@/app/components/LogoutButton';
 import { useState } from 'react';
 
 export default function CriarCaso() {
@@ -10,8 +8,9 @@ export default function CriarCaso() {
     descricao: '',
     tipo: '',
     peritoResponsavel: '',
-    status: 'Em andamento',
+    dataHora: '',
   });
+
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -24,36 +23,26 @@ export default function CriarCaso() {
     const token = localStorage.getItem('token');
 
 
-    if(!token) {
+    if (!token) {
       alert("Úsuario não autenticado. Faça login");
     }
-
-
     try {
-        const response = await fetch('http://localhost:5000/api/casos', {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json',
-                'Authorization': `Bearer ${token}`,
-            },
-            body: JSON.stringify(form),
-        });
-
-        if(!response.ok) throw new Error('Erro ao cadastrar caso');
-
-        alert("Caso cadastrado com sucesso!");
-
-        setForm({
-        nome: '',
-        local: '',
-        descricao: '',
-        tipo: '',
-        peritoResponsavel: '',
-        status: 'Em andamento',
+      const response = await fetch('http://localhost:5000/api/casos', {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify(form),
       });
+
+      if (!response.ok) throw new Error('Erro ao cadastrar caso');
+
+      alert("Caso cadastrado com sucesso!");
+
     } catch (err) {
-        console.error(err);
-        alert('Erro ao enviar dados. Verifique o  console.');
+      console.error(err);   
+      alert('Erro ao enviar dados. Verifique o  console.');
     }
   };
 
@@ -108,16 +97,16 @@ export default function CriarCaso() {
           className="w-full p-2 border rounded"
           required
         />
-        <select
-          name="status"
-          value={form.status}
-          onChange={handleChange}
-          className="w-full p-2 border rounded"
-        >
-          <option>Em andamento</option>
-          <option>Finalizado</option>
-          <option>Arquivado</option>
-        </select>
+        <div>
+          <label htmlFor="dataHora">Data e Hora:</label>
+          <input
+            type="datetime-local"
+            name="dataHora"
+            value={form.dataHora}
+            onChange={handleChange}
+            required
+          />
+        </div>
         <button
           type="submit"
           className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
@@ -125,8 +114,6 @@ export default function CriarCaso() {
           Salvar Caso
         </button>
       </form>
-
-      <LogoutButton/>
     </div>
   );
 }
