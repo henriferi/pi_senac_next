@@ -27,7 +27,7 @@ export default function DashboardPage() {
       .catch(err => console.error('Erro ao buscar dados da dashboard:', err));
   }, []);
 
-  if (!dashboard) return <p>Carregando dashboard...</p>;
+  if (!dashboard) return <p className='mt-2 p-2'>Carregando dashboard...</p>;
 
   const casosPorTipoArray = Object.entries(dashboard.casosPorTipo).map(
     ([tipo, quantidade]) => ({
