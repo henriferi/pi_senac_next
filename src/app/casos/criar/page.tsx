@@ -67,11 +67,11 @@ export default function CriarCaso() {
     <div className="max-w-2xl mx-auto mt-10 p-6 bg-white shadow-md rounded-2xl">
       <h1 className="text-2xl font-bold mb-6">Cadastrar Caso</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
-        <input name="nome" placeholder="Nome do caso" value={form.nome} onChange={handleChange} className="w-full p-2 border rounded" required />
-        <input name="local" placeholder="Local" value={form.local} onChange={handleChange} className="w-full p-2 border rounded" required />
-        <textarea name="descricao" placeholder="Descrição" value={form.descricao} onChange={handleChange} className="w-full p-2 border rounded" required />
+        <input name="nome" placeholder="Nome do caso" value={form.nome} onChange={handleChange} className="w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200" required />
+        <input name="local" placeholder="Local" value={form.local} onChange={handleChange} className="w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200" required />
+        <textarea name="descricao" placeholder="Descrição" value={form.descricao} onChange={handleChange} className="w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200" required />
         
-        <select name="tipo" value={form.tipo} onChange={handleChange} className="w-full p-2 border rounded" required>
+        <select name="tipo" value={form.tipo} onChange={handleChange} className="w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200" required>
           <option value="">Selecione um tipo</option>
           <option value="Lesão Corporal">Lesão Corporal</option>
           <option value="Identificação por Arcos Dentais">Identificação por Arcos Dentais</option>
@@ -84,7 +84,7 @@ export default function CriarCaso() {
           name="peritoResponsavel"
           value={form.peritoResponsavel}
           onChange={handleChange}
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200" 
           required
         >
           <option value="">Selecione um perito</option>
@@ -102,11 +102,12 @@ export default function CriarCaso() {
             name="dataHora"
             value={form.dataHora}
             onChange={handleChange}
+            className="w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200" 
             required
           />
         </div>
 
-        <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+        <button type="submit" className="bg-blue-900 px-4 py-2 rounded text-white cursor-pointer hover:bg-blue-950 transition duration-300 ease-in-out">
           Salvar Caso
         </button>
       </form>
