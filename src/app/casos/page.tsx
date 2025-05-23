@@ -47,12 +47,29 @@ export default function ListaCasos() {
       ) : (
         <ul className="space-y-4">
           {casos.map((caso, index) => (
-            <li key={caso._id} className="p-4 border rounded-lg shadow hover:bg-gray-50">
+            <li key={caso._id} className="p-4 rounded-lg shadow-md hover:bg-gray-50 bg-white">
               <Link href={`/casos/${caso._id}`}>
-                <h2 className="text-xl font-semibold text-blue-600 hover:underline">{caso.nome}</h2>
-                <p><strong>Local:</strong> {caso.local}</p>
-                <p><strong>Tipo:</strong> {caso.tipo}</p>
-                <p><strong>Perito:</strong> {caso.peritoResponsavel.nome}</p>
+                <div className="flex justify-between items-center mb-6">
+                    <h1 className="text-3xl font-bold text-gray-900">{caso.nome}</h1>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="bg-gray-50 p-4 rounded-lg shadow-sm">
+                      <p className="text-sm font-medium text-gray-600 mb-2">Local</p>
+                      <p className="text-lg text-gray-800">{caso.local}</p>
+                    </div>
+                    <div className="bg-gray-50 p-4 rounded-lg shadow-sm">
+                      <p className="text-sm font-medium text-gray-600 mb-2">Tipo</p>
+                      <p className="text-lg text-gray-800">{caso.tipo}</p>
+                    </div>
+                    <div className="bg-gray-50 p-4 rounded-lg shadow-sm">
+                      <p className="text-sm font-medium text-gray-600 mb-2">Descrição</p>
+                      <p className="text-lg text-gray-800">{caso.descricao}</p>
+                    </div>
+                    <div className="bg-gray-50 p-4 rounded-lg shadow-sm">
+                      <p className="text-sm font-medium text-gray-600 mb-2">Perito</p>
+                      <p className="text-lg text-gray-800">{caso.peritoResponsavel.nome} </p>
+                    </div>
+                </div>
               </Link>
             </li>
           ))}
