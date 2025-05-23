@@ -10,6 +10,7 @@ type Caso = {
     local: string;
     descricao: string;
     tipo: string;
+    status: string;
     peritoResponsavel: { nome: string; email: string };
 };
 
@@ -48,9 +49,14 @@ export default function DetalhesCaso() {
         <div className="max-w-3xl mx-auto mt-10 p-6 rounded-xl shadow-lg bg-white">
             <div className="flex justify-between items-center mb-6">
                 <h1 className="text-3xl font-bold text-gray-900">{caso.nome}</h1>
-                <button className="bg-blue-900 px-4 py-2 rounded text-white cursor-pointer hover:bg-blue-950 transition duration-300 ease-in-out">
-                Gerar Relatório
-                </button>
+                <div className="flex gap-12">
+                    <div className="px-4 py-2 rounded-xl bg-gray-200">
+                        <p className="text-lg text-gray-800">{caso.status} </p>
+                    </div>
+                    <button className="bg-blue-900 px-4 py-2 rounded text-white cursor-pointer hover:bg-blue-950 transition duration-300 ease-in-out">
+                    Gerar Relatório
+                    </button>
+                </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="bg-gray-50 p-4 rounded-lg shadow-sm">

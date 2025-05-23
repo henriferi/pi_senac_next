@@ -14,6 +14,7 @@ type Caso = {
   local: string;
   descricao: string;
   tipo: string;
+  status: string;
   peritoResponsavel: Perito;
 };
 
@@ -51,6 +52,9 @@ export default function ListaCasos() {
               <Link href={`/casos/${caso._id}`}>
                 <div className="flex justify-between items-center mb-6">
                     <h1 className="text-3xl font-bold text-gray-900">{caso.nome}</h1>
+                    <div className="px-4 py-2 rounded-xl bg-gray-200">
+                        <p className="text-lg text-gray-800">{caso.status} </p>
+                    </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="bg-gray-50 p-4 rounded-lg shadow-sm">
