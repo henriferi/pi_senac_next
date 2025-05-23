@@ -26,9 +26,13 @@ export default function RootLayout({
 
   return (
     <html lang="pt-br">
+        <head>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>GOP Gestão Odontolegal Pericial</title>
+        </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {!isLoginPage && <Header />}
-        <div className="flex pt-16">
+        <div className="flex pt-16 bg-blue-50">
           {!isLoginPage && <Sidebar />}
           <main className={`flex-1 ${!isLoginPage ? 'ml-48' : ''} min-h-[calc(100vh-64px)]`}>
             {children}
