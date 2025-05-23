@@ -44,15 +44,42 @@ export default function DetalhesCaso() {
 
     console.log('Caso renderizado:', caso)
 
-    return (
-        <div className="max-w-3xl mx-auto mt-10 p-6 border rounded shadow">
-            <h1 className="text-2xl font-bold mb-4">{caso.nome}</h1>
-            <p><strong>Local:</strong> {caso.local}</p>
-            <p><strong>Tipo:</strong> {caso.tipo}</p>
-            <p><strong>Descrição:</strong> {caso.descricao}</p>
-            <p><strong>Perito:</strong> {caso.peritoResponsavel.nome} ({caso.peritoResponsavel.email})</p>
-
-            <Link href={'/casos'}><button className='bg-red-500 p-2 rounded text-white mt-4 cursor-pointer hover:bg-red-700 transition duration-300 ease-in-out'>Voltar</button></Link>
+    return (    
+        <div className="max-w-3xl mx-auto mt-10 p-6 rounded-xl shadow-lg bg-white">
+            <div className="flex justify-between items-center mb-6">
+                <h1 className="text-3xl font-bold text-gray-900">{caso.nome}</h1>
+                <button className="bg-blue-900 px-4 py-2 rounded text-white cursor-pointer hover:bg-blue-950 transition duration-300 ease-in-out">
+                Gerar Relatório
+                </button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="bg-gray-50 p-4 rounded-lg shadow-sm">
+                <p className="text-sm font-medium text-gray-600 mb-2">Local</p>
+                <p className="text-lg text-gray-800">{caso.local}</p>
+                </div>
+                <div className="bg-gray-50 p-4 rounded-lg shadow-sm">
+                <p className="text-sm font-medium text-gray-600 mb-2">Tipo</p>
+                <p className="text-lg text-gray-800">{caso.tipo}</p>
+                </div>
+                <div className="bg-gray-50 p-4 rounded-lg shadow-sm">
+                <p className="text-sm font-medium text-gray-600 mb-2">Descrição</p>
+                <p className="text-lg text-gray-800">{caso.descricao}</p>
+                </div>
+                <div className="bg-gray-50 p-4 rounded-lg shadow-sm">
+                <p className="text-sm font-medium text-gray-600 mb-2">Perito</p>
+                <p className="text-lg text-gray-800">{caso.peritoResponsavel.nome} ({caso.peritoResponsavel.email})</p>
+                </div>
+            </div>
+            <div className="flex space-x-4 mt-6">
+                <Link href={'/casos'}>
+                <button className="bg-red-700 px-4 py-2 rounded text-white cursor-pointer hover:bg-red-900 transition duration-300 ease-in-out">
+                    Voltar
+                </button>
+                </Link>
+                <button className="bg-green-700 px-4 py-2 rounded text-white cursor-pointer hover:bg-green-900 transition duration-300 ease-in-out">
+                Adicionar Evidência
+                </button>
+            </div>
         </div>
     );
 }
