@@ -23,7 +23,9 @@ export default function DashboardPage() {
       },
     })
       .then(res => res.json())
-      .then(data => setDashboard(data))
+      .then(data => {
+        setDashboard(data);
+      }) 
       .catch(err => console.error('Erro ao buscar dados da dashboard:', err));
   }, []);
 
@@ -67,12 +69,14 @@ export default function DashboardPage() {
       <div className="mb-6 bg-white p-4 rounded shadow">
         <h2 className="text-lg font-semibold mb-2">Casos Recentes</h2>
         <ul>
-          {dashboard.casosRecentes.map((caso, index) => (
-            <li key={index} className="border-b py-2">
-              <strong>{caso.nome}</strong> ({caso.tipo}) - {caso.perito} em{' '}
-              {new Date(caso.data).toLocaleDateString()}
-            </li>
-          ))}
+          {dashboard.casosRecentes.map((caso, index) => {
+            return (
+              <li key={index} className="border-b py-2">
+                <strong>{caso.nome}</strong> ({caso.tipo}) - {caso.perito} em{' '}
+                {new Date(caso.data).toLocaleDateString()}
+              </li>
+            );
+          })}
         </ul>
       </div>
 
