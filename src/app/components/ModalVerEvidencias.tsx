@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { FiX, FiDownload, FiImage } from 'react-icons/fi';
 
@@ -83,7 +84,7 @@ export default function ModalEvidencias({
                 </p>
 
                 {evidencia.tipoArquivo.startsWith('image/') ? (
-                  <img
+                  <Image
                     src={`http://localhost:5000/api/evidencias/${evidencia.arquivoId}`}
                     alt={evidencia.descricao}
                     className="w-full h-48 object-cover rounded mb-2"

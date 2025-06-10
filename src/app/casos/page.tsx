@@ -47,7 +47,7 @@ export default function ListaCasos() {
         <p className="text-gray-500">Nenhum caso cadastrado.</p>
       ) : (
         <ul className="space-y-4">
-          {casos.map((caso, index) => (
+          {casos.map((caso) => (
             <li key={caso._id} className="p-4 rounded-lg shadow-md hover:bg-gray-50 bg-white">
               <Link href={`/casos/${caso._id}`}>
                 <div className="flex justify-between items-center mb-6">
