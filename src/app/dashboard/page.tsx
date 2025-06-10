@@ -17,7 +17,7 @@ export default function DashboardPage() {
 
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/dashboard/resumo', {
+    fetch('https://plataforma-gestao-analise-pericial-b2a1.onrender.com/api/dashboard/resumo', {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },

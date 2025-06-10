@@ -17,7 +17,7 @@ export default function CriarCaso() {
   useEffect(() => {
     const fetchPeritos = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/peritos');
+        const res = await fetch('https://plataforma-gestao-analise-pericial-b2a1.onrender.com/api/peritos');
         const data = await res.json();
         if(data.success) {
           setPeritos(data.peritos);
@@ -45,7 +45,7 @@ export default function CriarCaso() {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/casos', {
+      const response = await fetch('https://plataforma-gestao-analise-pericial-b2a1.onrender.com/api/casos', {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',

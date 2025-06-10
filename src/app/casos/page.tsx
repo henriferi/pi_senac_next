@@ -23,7 +23,7 @@ export default function ListaCasos() {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    fetch('http://localhost:5000/api/casos', {
+    fetch('https://plataforma-gestao-analise-pericial-b2a1.onrender.com/api/casos', {
       headers: {
         Authorization: `Bearer ${token}`,
       }

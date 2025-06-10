@@ -26,7 +26,7 @@ const LoginPage = () => {
 
     try {
       // Fazendo a requisição ao backend para obter o token
-      const response = await axios.post("http://localhost:5000/api/auth/login", { email, senha });
+      const response = await axios.post("https://plataforma-gestao-analise-pericial-b2a1.onrender.com/api/auth/login", { email, senha });
       alert("Login efetuado com sucesso!");
       const token = response.data.token;
 

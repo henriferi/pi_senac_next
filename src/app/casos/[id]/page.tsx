@@ -29,7 +29,7 @@ export default function DetalhesCaso() {
         const casoId = typeof id === 'string' ? id : Array.isArray(id) ? id[0] : '';
         if (!casoId) return;
 
-        fetch(`http://localhost:5000/api/casos/${casoId}`, {
+        fetch(`https://plataforma-gestao-analise-pericial-b2a1.onrender.com/api/casos${casoId}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
