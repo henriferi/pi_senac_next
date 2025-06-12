@@ -1,38 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# GOP - Gestão Odontolegal Pericial
 
-First, run the development server:
+## Introdução
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+A **GOP - Gestão Odontolegal Pericial** é uma aplicação fullstack voltada à gestão de casos forenses odontológicos, contemplando autenticação, gerenciamento de usuários, evidências, vítimas, laudos e relatórios. A aplicação conta com:
+
+- **API RESTful** desenvolvida em **Node.js + Express** com persistência de dados via **MongoDB**.
+- **Frontend** desenvolvido em **Next.js** com rotas otimizadas, interfaces organizadas e navegação dinâmica.
+
+## Tecnologias Utilizadas
+
+- **Next.js 13+** com estrutura de rotas baseada em diretórios
+- **TypeScript**
+- **PostCSS** / **TailwindCSS**
+- **Axios** (comunicação com API)
+
+## Estrutura de Pastas (Frontend)
+
+A seguir, um resumo da estrutura visual da aplicação Next.js (presente em `src/app`):
+
+```
+📁 src/app
+├── 📁 casos
+│   ├── 📁 [id]
+│   │   └── page.tsx
+│   ├── 📁 criar
+│   │   └── page.tsx
+│   ├── 📁 visualizar
+│   │   └── page.tsx
+├── 📁 components
+│   └── dashboard
+│       └── page.tsx
+├── 📁 login
+│   └── page.tsx
+├── favicon.ico
+├── globals.css
+├── layout.tsx
+├── page.tsx
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> ⚙️ A estrutura está em conformidade com o modelo de **App Router** do Next.js 13+.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Instalação do Projeto
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Clone o repositório:**
+   ```bash
+   git clone <url-do-repositorio>
+   cd nome-do-projeto
+   ```
 
-## Learn More
+2. **Instale as dependências:**
+   ```bash
+   npm install
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+3. **Configure as variáveis de ambiente:**
+   Crie um `.env` com as seguintes chaves:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```env
+   MONGODB_URI=<string de conexão>
+   PORT=5000
+   JWT_SECRET=<chave jwt>
+   GEMINI_API_KEY=<api opcional>
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. **Execute os servidores:**
 
-## Deploy on Vercel
+   - Para o backend:
+     ```bash
+     npm start
+     ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   - Para o frontend (caso separado ou monorepo com script específico):
+     ```bash
+     npm run dev
+     ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# pi_senac_next
-# pi_senac_next
+## Documentação da API
+
+Acesse via Swagger:
+```
+https://plataforma-gestao-analise-pericial-b2a1.onrender.com/api-docs
+```
+Consulte o repositório da API [aqui](https://github.com/kethyllecury/Plataforma-Gestao-Analise-Pericial-Backend).
+
+## Contribuidores
+
+- [Gabriel de Santana](https://github.com/gabrieldsantana)
+- [Henrique Fernandes](https://github.com/henriferi)
+- [Kethylle Cury](https://github.com/kethyllecury)
+
+---
